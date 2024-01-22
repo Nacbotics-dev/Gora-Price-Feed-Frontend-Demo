@@ -5,7 +5,7 @@ import { Buffer } from 'buffer';
 import { sha512_256 } from "js-sha512";
 
 export const TESTNET_CONFIG = {
-    NODE_BASEURL : "https://testnet-api.algonode.network",
+    NODE_BASEURL : "https://testnet-api.algonode.cloud",
     NODE_TOKEN : "",
     NODE_PORT:"443",
     NODE_NETWORK:"testnet"

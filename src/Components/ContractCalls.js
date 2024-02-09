@@ -4,22 +4,35 @@ import algosdk from "algosdk";
 import { Buffer } from 'buffer';
 import { sha512_256 } from "js-sha512";
 
-export const TESTNET_CONFIG = {
-    NODE_BASEURL : "https://testnet-api.algonode.cloud",
-    NODE_TOKEN : "",
-    NODE_PORT:"443",
-    NODE_NETWORK:"testnet"
+export const NETWORK_CONFIG = {
+    testnet:{
+        NODE_BASEURL : "https://testnet-api.algonode.cloud",
+        NODE_TOKEN : "",
+        NODE_PORT:"443",
+        NODE_NETWORK:"testnet"
+    },
+    mainnet:{
+        NODE_BASEURL : "https://mainnet-api.algonode.cloud",
+        NODE_TOKEN : "",
+        NODE_PORT:"443",
+        NODE_NETWORK:"mainnet"
+    }
 }
 
+// GORA TEST NET
+// export const GORA_TOKEN_ID =  439549897;
+// export const GORA_CONTRACT_ID =  439550742;
+
+// GORA MAINNET
+export const GORA_TOKEN_ID =  1138500612;
+export const GORA_CONTRACT_ID =  1140801821;
 
 
-export const GORA_TOKEN_ID =  439549897;
-export const GORA_CONTRACT_ID =  439550742;
-export const PRICE_PAIR_CONTRACT_ID =  586039843;
-export const PRICE_PAIR_CONTRACT_ADDRESS = "O2N4ZCLY4GWBPJRKQMTQFMLIDN5O4NTJOQGC2VNN7UUAS5JOYOV45LHFEA";
+export const PRICE_PAIR_CONTRACT_ID =  1452153032;
+export const PRICE_PAIR_CONTRACT_ADDRESS = "KWG53RA5ZLZBWJTDYFFIVSJSRKN3XWMRIORJIBTLHXMIDMIXX45FFXV7KE";
 
-export const indexer = new algosdk.Indexer(TESTNET_CONFIG.NODE_TOKEN, TESTNET_CONFIG.NODE_BASEURL, TESTNET_CONFIG.NODE_PORT);
-export const algodClient = new algosdk.Algodv2(TESTNET_CONFIG.NODE_TOKEN, TESTNET_CONFIG.NODE_BASEURL, TESTNET_CONFIG.NODE_PORT);
+export const indexer = new algosdk.Indexer(NETWORK_CONFIG["mainnet"].NODE_TOKEN, NETWORK_CONFIG["mainnet"].NODE_BASEURL, NETWORK_CONFIG["mainnet"].NODE_PORT);
+export const algodClient = new algosdk.Algodv2(NETWORK_CONFIG["mainnet"].NODE_TOKEN, NETWORK_CONFIG["mainnet"].NODE_BASEURL, NETWORK_CONFIG["mainnet"].NODE_PORT);
 
 
 async function makeATCComposer() {

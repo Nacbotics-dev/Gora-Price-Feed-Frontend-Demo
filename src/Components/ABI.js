@@ -1,4 +1,4 @@
-export const ABI = {
+export const ABI ={
     "name": "PricePair",
     "methods": [
         {
@@ -108,6 +108,18 @@ export const ABI = {
             ],
             "returns": {
                 "type": "void"
+            }
+        },
+        {
+            "name": "get_pair_price",
+            "args": [
+                {
+                    "type": "byte[]",
+                    "name": "price_pair_name"
+                }
+            ],
+            "returns": {
+                "type": "byte[]"
             }
         },
         {

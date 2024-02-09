@@ -2,8 +2,8 @@ import algosdk from 'algosdk';
 import { useState } from 'react';
 import { PeraWalletConnect } from '@perawallet/connect';
 import ConnectButton,{CreateBoxButton,GetPricePair} from './Components/Button';
-import { GORA_CONTRACT_ID,PRICE_PAIR_CONTRACT_ID } from './Components/ContractCalls';
 import { WalletProvider, useInitializeProviders, PROVIDER_ID } from '@txnlab/use-wallet';
+import { GORA_CONTRACT_ID,PRICE_PAIR_CONTRACT_ID,NETWORK_CONFIG } from './Components/ContractCalls';
 
 
 
@@ -11,32 +11,22 @@ import { WalletProvider, useInitializeProviders, PROVIDER_ID } from '@txnlab/use
 export default function App() {
     const [pricePair,setPricePair] = useState("");
     const [oracleResult,setOracleResult] = useState(null);
-    
     const [canFetchPricePair,setCanFetchPricePair] = useState(false)
+    
     const providers = useInitializeProviders({
         providers: [
             { id: PROVIDER_ID.PERA, clientStatic: PeraWalletConnect },
         ],
-        nodeConfig: {
-            network: 'testnet',
-            nodeServer: 'https://testnet-api.algonode.cloud',
-            nodeToken: '',
-            nodePort: '443'
-        },
+        nodeConfig: NETWORK_CONFIG["mainnet"],
         algosdkStatic: algosdk,
     })
-
-
-    
-
-
 
     return (
         <WalletProvider value={providers}>
             <div className='min-h-screen flex flex-col space-y-5 place-content-center place-items-center'>
                 <div className='w-full max-w-sm [30rem] mx-auto'>
-                    <h2 className='font-semibold text-2xl'>GORA TESTNET APP ID : {GORA_CONTRACT_ID}</h2>
-                    <h2 className='font-semibold text-2xl'>PRICE PAIR TESTNET APP ID : {PRICE_PAIR_CONTRACT_ID}</h2>
+                    <h2 className='font-semibold text-2xl'>GORA MAINNET APP ID : {GORA_CONTRACT_ID}</h2>
+                    <h2 className='font-semibold text-2xl'>PRICE PAIR MAINNET APP ID : {PRICE_PAIR_CONTRACT_ID}</h2>
 
                     <a target="_blank"  rel="noreferrer" href="https://github.com/Nacbotics-dev/Gora-Price-Feed-Frontend-Demo" className='font-medium text-lg text-center text-green-500'>View source code on github</a>
                 </div>

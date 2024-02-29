@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { Buffer } from 'buffer';
 import Loader from "./Loader/Loader";
+import { useState,useEffect } from "react";
 import { useWallet } from "@txnlab/use-wallet";
-import { create_oracle_request_params,fetch_token_price_from_oracle } from "./ContractCalls";
+
+import { create_oracle_request_params,fetch_token_price_from_oracle,algodClient,PRICE_PAIR_CONTRACT_ID } from "./ContractCalls";
 
 
 export default function ConnectButton() {
@@ -32,6 +34,13 @@ export function CreateBoxButton({pricePair,setCanFetchPricePair}) {
     const {activeAddress,signer} = useWallet()
     const [isLoading,setIsLoading] = useState(false);
 
+
+    useEffect(() => {
+        algodClient.getApplicationBoxByName(PRICE_PAIR_CONTRACT_ID,Buffer.from("req"+pricePair)).do().then(()=>{
+            setCanFetchPricePair(true)
+        })
+    }, [pricePair,setCanFetchPricePair])
+    
 
     const createRequestParams = ()=>{
         setIsLoading(true)
@@ -67,6 +76,7 @@ export function GetPricePair({pricePair,setOracleResult,canFetchPricePair}) {
         setIsLoading(true)
         fetch_token_price_from_oracle(activeAddress,signer,pricePair).then((res)=>{
             setIsLoading(false)
+            console.log(res,"???????????")
             setOracleResult(res)
         }).catch((err)=>{
             setIsLoading(false)

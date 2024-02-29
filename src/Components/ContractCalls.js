@@ -158,7 +158,11 @@ export async function fetch_token_price_from_oracle(sender,signer,price_pair_nam
     });
 
     // example: ATC_RESULTS
-    await atc.execute(algodClient, 4);
+    const result = await atc.execute(algodClient, 4);
+    // return(result?.methodResults)
+
+
+    console.log(result.methodResults,"@@@@@@@@@@@@@@@@@@@@@")
     await sleep(15000);
 
     let oracle_response = await algodClient.getApplicationBoxByName(PRICE_PAIR_CONTRACT_ID,Buffer.from(price_pair_name)).do()

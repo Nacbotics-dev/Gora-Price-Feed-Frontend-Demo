@@ -8,6 +8,7 @@ import { GORA_CONTRACT_ID,PRICE_PAIR_CONTRACT_ID,NETWORK_CONFIG } from './Compon
 
 
 
+
 export default function App() {
     const [pricePair,setPricePair] = useState("");
     const [oracleResult,setOracleResult] = useState(null);

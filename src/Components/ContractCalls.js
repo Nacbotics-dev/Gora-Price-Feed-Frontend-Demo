@@ -22,17 +22,18 @@ export const NETWORK_CONFIG = {
 // GORA TEST NET
 // export const GORA_TOKEN_ID =  439549897;
 // export const GORA_CONTRACT_ID =  439550742;
+// export const PRICE_PAIR_CONTRACT_ID =  586039843;
+// export const PRICE_PAIR_CONTRACT_ADDRESS = "O2N4ZCLY4GWBPJRKQMTQFMLIDN5O4NTJOQGC2VNN7UUAS5JOYOV45LHFEA"
+// export const indexer = new algosdk.Indexer(NETWORK_CONFIG.testnet.NODE_TOKEN, NETWORK_CONFIG.testnet.NODE_BASEURL, NETWORK_CONFIG.testnet.NODE_PORT);
+// export const algodClient = new algosdk.Algodv2(NETWORK_CONFIG.testnet.NODE_TOKEN, NETWORK_CONFIG.testnet.NODE_BASEURL, NETWORK_CONFIG.testnet.NODE_PORT);
 
 // GORA MAINNET
 export const GORA_TOKEN_ID =  1138500612;
 export const GORA_CONTRACT_ID =  1140801821;
-
-
 export const PRICE_PAIR_CONTRACT_ID =  1452153032;
 export const PRICE_PAIR_CONTRACT_ADDRESS = "KWG53RA5ZLZBWJTDYFFIVSJSRKN3XWMRIORJIBTLHXMIDMIXX45FFXV7KE";
-
-export const indexer = new algosdk.Indexer(NETWORK_CONFIG["mainnet"].NODE_TOKEN, NETWORK_CONFIG["mainnet"].NODE_BASEURL, NETWORK_CONFIG["mainnet"].NODE_PORT);
-export const algodClient = new algosdk.Algodv2(NETWORK_CONFIG["mainnet"].NODE_TOKEN, NETWORK_CONFIG["mainnet"].NODE_BASEURL, NETWORK_CONFIG["mainnet"].NODE_PORT);
+export const indexer = new algosdk.Indexer(NETWORK_CONFIG.mainnet.NODE_TOKEN, NETWORK_CONFIG.mainnet.NODE_BASEURL, NETWORK_CONFIG.mainnet.NODE_PORT);
+export const algodClient = new algosdk.Algodv2(NETWORK_CONFIG.mainnet.NODE_TOKEN, NETWORK_CONFIG.mainnet.NODE_BASEURL, NETWORK_CONFIG.mainnet.NODE_PORT);
 
 
 async function makeATCComposer() {

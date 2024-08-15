@@ -18,7 +18,7 @@ export default function App() {
         providers: [
             { id: PROVIDER_ID.PERA, clientStatic: PeraWalletConnect },
         ],
-        nodeConfig: NETWORK_CONFIG["mainnet"],
+        nodeConfig: NETWORK_CONFIG.mainnet,
         algosdkStatic: algosdk,
     })
 
@@ -47,7 +47,7 @@ export default function App() {
                          <h3 className='font-bold text-lg'>{pricePair.toLocaleUpperCase()} PRICE : <span>${oracleResult}</span></h3>
                     </div>}
 
-                    <CreateBoxButton pricePair={pricePair} setCanFetchPricePair={setCanFetchPricePair}/>
+                    <CreateBoxButton pricePair={pricePair} canFetchPricePair={canFetchPricePair} setCanFetchPricePair={setCanFetchPricePair}/>
                     <GetPricePair pricePair={pricePair} setOracleResult={setOracleResult} canFetchPricePair={canFetchPricePair}/>
 
                     

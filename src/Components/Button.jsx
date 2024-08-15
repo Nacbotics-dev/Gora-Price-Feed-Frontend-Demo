@@ -30,15 +30,17 @@ export default function ConnectButton() {
 }
 
 
-export function CreateBoxButton({pricePair,setCanFetchPricePair}) {
+export function CreateBoxButton({pricePair,canFetchPricePair,setCanFetchPricePair}) {
     const {activeAddress,signer} = useWallet()
     const [isLoading,setIsLoading] = useState(false);
 
 
     useEffect(() => {
-        algodClient.getApplicationBoxByName(PRICE_PAIR_CONTRACT_ID,Buffer.from("req"+pricePair)).do().then(()=>{
-            setCanFetchPricePair(true)
-        })
+        if (pricePair) {
+            algodClient.getApplicationBoxByName(PRICE_PAIR_CONTRACT_ID,Buffer.from("req"+pricePair)).do().then(()=>{
+                setCanFetchPricePair(true)
+            })
+        }
     }, [pricePair,setCanFetchPricePair])
     
 
@@ -56,7 +58,7 @@ export function CreateBoxButton({pricePair,setCanFetchPricePair}) {
 
 
     return (
-        <button onClick={createRequestParams} disabled ={!pricePair || isLoading} className='flex gap-3 place-content-center place-items-center px-3 disabled:text-gray-300 disabled:border-gray-300 disabled:cursor-not-allowed py-5 w-full rounded-md border-black border-2 text-black font-medium'>
+        <button onClick={createRequestParams} disabled ={!pricePair || isLoading || canFetchPricePair} className='flex gap-3 place-content-center place-items-center px-3 disabled:text-gray-300 disabled:border-gray-300 disabled:cursor-not-allowed py-5 w-full rounded-md border-black border-2 text-black font-medium'>
             {isLoading && <Loader color={" !border-t-black !border-r-black !border-l-black"}/>}
             Create Request Params Box
         </button>
